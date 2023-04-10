@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PlanoAprendizado.Models.DayTime>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Horas Dia</h1>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Delivered)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualState.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hours) hrs
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem =>  item.Delivered ) 
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-primary mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-edit"></i></a>
+                    <a asp-action="Details" class="btn btn-success mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-search"></i></a>
+                    <a asp-action="Delete" class="btn btn-danger mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

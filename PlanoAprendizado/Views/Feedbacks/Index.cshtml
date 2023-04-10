@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PlanoAprendizado.Models.Feedback>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Feedbacks</h1>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Circle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Theme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OportunityLearning)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Circle.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Theme.Name)
+                </td>
+               @* <td>
+                    @Html.DisplayFor(modelItem => item.PeopleFeedbacks
+                .Where(x => x.Type == TypePerson.Mentor && x.FeedbackId == item.Id)
+                .FirstOrDefault().Person.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PeopleFeedbacks
+                .Where(x => x.Type == TypePerson.Mentorado && x.FeedbackId == item.Id)
+                .FirstOrDefault().Person.Name)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.OportunityLearning)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-primary mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-edit"></i></a>
+                    <a asp-action="Details" class="btn btn-success mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-search"></i></a>
+                    <a asp-action="Delete" class="btn btn-danger mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

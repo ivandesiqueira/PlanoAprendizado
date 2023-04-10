@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20230328231500_InsercaoDados.cs" />
+    <Compile Remove="Migrations\20230328231500_InsercaoDados.Designer.cs" />
+    <Compile Remove="Migrations\20230329014135_AlterandoDados.cs" />
+    <Compile Remove="Migrations\20230329014135_AlterandoDados.Designer.cs" />
+    <Compile Remove="Migrations\20230330004218_ModificandoDados.cs" />
+    <Compile Remove="Migrations\20230330004218_ModificandoDados.Designer.cs" />
+    <Compile Remove="Migrations\20230403193009_InsercaoDayTime.cs" />
+    <Compile Remove="Migrations\20230403193009_InsercaoDayTime.Designer.cs" />
+    <Compile Remove="Migrations\20230404003719_InsercaoDayTimes.cs" />
+    <Compile Remove="Migrations\20230404003719_InsercaoDayTimes.Designer.cs" />
+    <Compile Remove="Migrations\20230406002720_Insert.cs" />
+    <Compile Remove="Migrations\20230406002720_Insert.Designer.cs" />
+    <Compile Remove="Migrations\20230407203647_EdicaoModels.cs" />
+    <Compile Remove="Migrations\20230407203647_EdicaoModels.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Core" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils" Version="3.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc" Version="3.1.5" />
+  </ItemGroup>
+
+</Project>

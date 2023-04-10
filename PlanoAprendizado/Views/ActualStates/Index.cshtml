@@ -1,0 +1,107 @@
+﻿@model IEnumerable<PlanoAprendizado.Models.ActualState>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Estado Atual</h1>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypePlan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>     
+            <th>
+                @Html.DisplayNameFor(model => model.Person)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimePlanned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RealTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Delivered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Productivity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sprint)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Name)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.TypePlan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>  
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.Name)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimePlanned) hrs
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RealTime) hrs
+            </td>
+            <td>
+                @{
+                    if (item.Delivered == true)
+                    {
+                        <i class="fas fa-check" style="color: darkgreen"></i>
+                    }
+                    if (item.Delivered == false)
+                    {
+                        <i class="fas fa-times" style="color: darkred"></i>
+                    }
+                }
+            </td>
+           @* <td>
+            @Html.DisplayFor(modelItem => item.Delivered)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Productivity) %
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sprint)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-primary mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-edit"></i></a>
+                    <a asp-action="Details" class="btn btn-success mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-search"></i></a>
+                    <a asp-action="Delete" class="btn btn-danger mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
