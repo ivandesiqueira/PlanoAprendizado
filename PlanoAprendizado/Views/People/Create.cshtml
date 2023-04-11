@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="DateBorn" class="control-label"></label>
-                <input asp-for="DateBorn" class="form-control" />
+                <input asp-for="DateBorn" class="form-control" placeholder="dd-mm-yyyy" min="1945-01-01" max="2002-30-12" />
                 <span asp-validation-for="DateBorn" class="text-danger"></span>
             </div>
             <div class="form-group">

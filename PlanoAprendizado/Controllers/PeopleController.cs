@@ -105,7 +105,7 @@ namespace PlanoAprendizado.Controllers
             {
                 return NotFound();
             }
-            ViewData["CircleId"] = new SelectList(_context.Circles, "Id", "Name'", person.CircleId);
+            ViewData["CircleId"] = new SelectList(_context.Circles, "Id", "Name", person.CircleId);
             return View(person);
         }
 
@@ -142,6 +142,7 @@ namespace PlanoAprendizado.Controllers
                     userPerson.Enterprise = person.Enterprise;
                     userPerson.Recommendation = person.Recommendation;
                     userPerson.IsStudying = person.IsStudying;
+                    userPerson.UserName = person.Name;
 
                     _context.Update(userPerson);
                     await _context.SaveChangesAsync();

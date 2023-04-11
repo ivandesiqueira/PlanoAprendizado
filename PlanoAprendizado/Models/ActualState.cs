@@ -61,7 +61,6 @@ namespace PlanoAprendizado.Models
             {
                 this.RealTime = this.DayTimes.Sum(x => x.Hours);
                 this.Delivered = this.DayTimes.FirstOrDefault(x => x.Delivered == true) != null;
-
             }
             if (this.Project.TypeTime == TypeTime.PrecoFechado)
             {
