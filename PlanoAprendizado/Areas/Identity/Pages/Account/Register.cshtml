@@ -4,33 +4,39 @@
     ViewData["Title"] = "Registro";
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
+
+<div class="card bg-gradient card-info" style="width: 350px; position: absolute; left: 40vw; top:20%; border: 5px; background-color: #DCDCDC">
+    <div class="card-body">
+        <h3 style="text-align: center">Registrar</h3>
+        <hr />
+        <h6 style="color: #17A2B8">Criar nova conta</h6>
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Criar uma nova conta.</h4>
-            <hr />
+            
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
+                <input asp-for="Input.Email" placeholder="Digite seu email" class="form-control" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
+                <input asp-for="Input.Password" placeholder="Digite sua senha" class="form-control" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <input asp-for="Input.ConfirmPassword" placeholder="Confirme sua senha" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Registrar</button>
+            <hr />
+            <div class="small mb-5 pb-lg-2">
+                <a class="text-muted" href="#!"></a>
+                <button type="submit" class="btn btn-info btn-lg btn-block">Criar</button>
+            </div>
         </form>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+@*    <div class="col-md-6 col-md-offset-2">
         <section>
             <h4>Use outro serviço para se registrar.</h4>
             <hr />
@@ -59,7 +65,7 @@
                 }
             }
         </section>
-    </div>
+    </div>*@
 </div>
 
 @section Scripts {

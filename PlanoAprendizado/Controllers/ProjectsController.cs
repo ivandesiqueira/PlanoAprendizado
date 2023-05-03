@@ -24,6 +24,7 @@ namespace PlanoAprendizado.Controllers
         // GET: Projects
         public async Task<IActionResult> Index()
         {
+         
             return View(await _context.Projects.ToListAsync());
         }
 

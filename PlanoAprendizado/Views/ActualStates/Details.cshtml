@@ -4,23 +4,21 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Detalhes</h1>
-
 <div>
-    <h4>Estado Atual</h4>
+    <h4>Detalhes Estado Atual</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Circle)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Circle.Id)
+            @Html.DisplayFor(model => model.Circle.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Project)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Project.Id)
+            @Html.DisplayFor(model => model.Project.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TypePlan)
@@ -32,7 +30,7 @@
             @Html.DisplayNameFor(model => model.TypeConsultor)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TypeConsultor.Id)
+            @Html.DisplayFor(model => model.TypeConsultor.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
@@ -50,7 +48,7 @@
             @Html.DisplayNameFor(model => model.Person)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Person.Id)
+            @Html.DisplayFor(model => model.Person.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TimePlanned)

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<PlanoAprendizado.Models.Expense>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Despesas</h4>
+
+<p>
+    <a class="btn btn-info" style="font-size: small" asp-action="Create">Adicionar</a>
+</p>
+<table class="table display compact" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>      
+            <th>
+                @Html.DisplayNameFor(model => model.MonthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostCenter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BankAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BankValueMoment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnterpriseBankValueMoment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th style="visibility: hidden"></th>
+        </tr>
+    </tfoot>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @if (item.Type)
+                    {
+                        <span>Recebimento</span>
+                    }
+                    else
+                    {
+                        <span>Pagamento</span>   
+                    }
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostCenter.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capture.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankAccount.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankValueMoment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnterpriseBankValueMoment)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-primary mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-edit"></i></a>
+                    <a asp-action="Details" class="btn btn-success mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-search"></i></a>
+                    <a asp-action="Delete" class="btn btn-danger mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

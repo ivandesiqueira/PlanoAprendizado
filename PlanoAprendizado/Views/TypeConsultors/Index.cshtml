@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Tipos Consultores</h1>
+<h4>Tarifas</h4>
 
 <p>
-    <a class="btn btn-info" asp-action="Create">Adicionar</a>
+    <a class="btn btn-info" style="font-size: small" asp-action="Create">Adicionar</a>
 </p>
-<table class="table">
+<table class="table" id="table">
     <thead>
         <tr>
             <th>
@@ -38,4 +38,11 @@
         </tr>
 }
     </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th style="visibility: hidden"></th>
+        </tr>
+    </tfoot>
 </table>

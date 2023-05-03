@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/css/adminlte.min.css">
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet" />
 </head>
 
 <body class="sidebar-mini sidebar-collapse" style="height: auto;">
@@ -21,6 +22,10 @@
         table{
             border-collapse: collapse;
             width: 100%;
+        }
+
+        select{
+            width: 80px;
         }
 
         th, td {
@@ -94,7 +99,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link " asp-area="" asp-controller="People" asp-action="Index" >
                                         <i class="far fa-circle nav-icon"></i>
-                                       <p>Pessoa</p>
+                                       <p>Usuário</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -152,7 +157,7 @@
                                  <li class="nav-item">
                                     <a class="nav-link " asp-area="" asp-controller="TypeConsultors" asp-action="Index">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Tipo Consultor</p>
+                                        <p>Tarifa</p>
                                     </a>
                                 </li>
                             </ul>
@@ -176,6 +181,47 @@
                                         <a class="nav-link " asp-area="" asp-controller="DayTimes" asp-action="Index">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Horas Dia</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" style="color:white">
+                                    <i class="fa fa-chart-line" style="text-align: center; padding-right: 16px"></i>
+                                    <p>
+                                        Financeiro
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Enterprises" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Empresa</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="BankAccounts" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Conta Bancária</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Captures" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Contas</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="CostCenters" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Centro de Custo</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Expenses" asp-action="Index">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Despesa</p>
                                         </a>
                                     </li>
                                 </ul>
@@ -238,6 +284,7 @@
     <!-- ORIGINAL SCRIPTS -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

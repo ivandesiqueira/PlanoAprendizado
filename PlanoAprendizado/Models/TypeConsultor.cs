@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace PlanoAprendizado.Models
 {
@@ -7,6 +8,7 @@ namespace PlanoAprendizado.Models
         public int Id { get; set; }
         [DisplayName("Tipo:")]
         public string Name { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         [DisplayName("Tarifa:")]
         public float Fee { get; set; }
     }

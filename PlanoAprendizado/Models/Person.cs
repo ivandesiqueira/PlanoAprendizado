@@ -47,7 +47,8 @@ namespace PlanoAprendizado.Models
         public List<Learning> Learnings { get; set; }
         public List<Feedback>Feedbacks { get; set; }
         public List<ActualState> ActualStates { get; set; }
-      
+        public List<Expense> Expenses { get; set; }
+
     }
 
     public enum TypePerson

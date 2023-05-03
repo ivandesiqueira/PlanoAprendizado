@@ -31,6 +31,29 @@ namespace PlanoAprendizado.Controllers
                 .Include(a => a.TypeConsultor);
             return View(await applicationDbContext.ToListAsync());
         }
+        //public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10)
+        //{
+        //    int totalCount = _context.ActualStates.Count();
+        //    int excludeRecords = (pageNumber - 1) * pageSize;
+        //    var data = await _context.ActualStates
+        //        .Skip(excludeRecords)
+        //        .Take(pageSize)
+        //        .OrderByDescending(x => x.Sprint)
+        //        .Include(a => a.Circle)
+        //        .Include(a => a.Person)
+        //        .Include(a => a.Project)
+        //        .Include(a => a.TypeConsultor)
+        //        .ToListAsync();
+
+        //    var viewModel = new PaginationViewModel<ActualState>
+        //    {
+        //        Items = data,
+        //        PageNumber = pageNumber,
+        //        PageSize = pageSize,
+        //        TotalCount = totalCount
+        //    };
+        //    return View(viewModel);
+        //}
 
         // GET: ActualStates/Details/5
         public async Task<IActionResult> Details(int? id)

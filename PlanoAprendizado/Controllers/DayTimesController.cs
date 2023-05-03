@@ -25,7 +25,8 @@ namespace PlanoAprendizado.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.DayTimes
-                .Include(d => d.ActualState);
+                 .Include(d => d.ActualState);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -138,12 +139,12 @@ namespace PlanoAprendizado.Controllers
                     _context.Update(dayTime);
                     await _context.SaveChangesAsync();
 
-                         actualState = await _context.ActualStates
-                        .Where(x => x.Id == dayTime.ActualStateId)
-                        .Include(X => X.Project)
-                        .Include(X => X.TypeConsultor)
-                        .Include(X => X.DayTimes)
-                        .FirstOrDefaultAsync();
+                    actualState = await _context.ActualStates
+                   .Where(x => x.Id == dayTime.ActualStateId)
+                   .Include(X => X.Project)
+                   .Include(X => X.TypeConsultor)
+                   .Include(X => X.DayTimes)
+                   .FirstOrDefaultAsync();
 
                     actualState.AttCalculos();
 

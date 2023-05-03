@@ -20,6 +20,11 @@ namespace PlanoAprendizado.Data
         public DbSet<PersonLearn> PeopleLearns { get; set; }
         public DbSet<PersonFeedback> PeopleFeedbacks { get; set; }
         public DbSet<DayTime> DayTimes { get; set; }
+        public DbSet<Enterprise> Enterprises { get; set; }
+        public DbSet<BankAccount> BankAccounts { get; set; }
+        public DbSet<Capture> Captures { get; set; }
+        public DbSet<CostCenter> CostCenters { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

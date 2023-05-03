@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "PlanoAprendizado/1.0.0": {
         "dependencies": {
+          "DataTables.AspNet.Core": "2.0.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.32",
           "Microsoft.AspNetCore.Identity.UI": "3.1.32",
@@ -314,6 +315,20 @@
         },
         "compile": {
           "PlanoAprendizado.dll": {}
+        }
+      },
+      "DataTables.AspNet.Core/2.0.2": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.1/DataTables.AspNet.Core.dll": {
+            "assemblyVersion": "2.0.2.0",
+            "fileVersion": "2.0.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.1/DataTables.AspNet.Core.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication/2.2.0": {
@@ -4096,6 +4111,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DataTables.AspNet.Core/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZRZoewp8OfbdGMNmz+GaAUugdQ20SaL38PbSsu95cRXeOLOZ2cu9ttft5rgCEbWXhny1Wy9WEW2AP6oZVFAR3A==",
+      "path": "datatables.aspnet.core/2.0.2",
+      "hashPath": "datatables.aspnet.core.2.0.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication/2.2.0": {
       "type": "package",

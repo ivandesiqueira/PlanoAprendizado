@@ -29,7 +29,7 @@ namespace PlanoAprendizado.Controllers
                 .Include(f => f.Theme)
                 .Include(f => f.PeopleFeedbacks)
                 .ThenInclude(f => f.Person);
-
+     
             return View(await applicationDbContext.ToListAsync());
         }
 

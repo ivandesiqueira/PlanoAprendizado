@@ -217,6 +217,47 @@ namespace PlanoAprendizado.Migrations
                     b.ToTable("ActualStates");
                 });
 
+            modelBuilder.Entity("PlanoAprendizado.Models.BankAccount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("Balance")
+                        .HasColumnType("real");
+
+                    b.Property<int>("EnterpriseId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("InitialBalance")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnterpriseId");
+
+                    b.ToTable("BankAccounts");
+                });
+
+            modelBuilder.Entity("PlanoAprendizado.Models.Capture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Captures");
+                });
+
             modelBuilder.Entity("PlanoAprendizado.Models.Circle", b =>
                 {
                     b.Property<int>("Id")
@@ -230,6 +271,21 @@ namespace PlanoAprendizado.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Circles");
+                });
+
+            modelBuilder.Entity("PlanoAprendizado.Models.CostCenter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CostCenters");
                 });
 
             modelBuilder.Entity("PlanoAprendizado.Models.DayTime", b =>
@@ -261,6 +317,101 @@ namespace PlanoAprendizado.Migrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("DayTimes");
+                });
+
+            modelBuilder.Entity("PlanoAprendizado.Models.Enterprise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Cnpj")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Enterprises");
+                });
+
+            modelBuilder.Entity("PlanoAprendizado.Models.Expense", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("BankAccountId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("BankValueMoment")
+                        .HasColumnType("real");
+
+                    b.Property<int?>("CaptureId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CashDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CompeteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CompeteMonthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CostCenterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("EnterpriseBankValueMoment")
+                        .HasColumnType("real");
+
+                    b.Property<DateTime>("MonthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("PersonId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Plan")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TargetBill")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Type")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Validated")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("Value")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BankAccountId");
+
+                    b.HasIndex("CaptureId");
+
+                    b.HasIndex("CostCenterId");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("Expenses");
                 });
 
             modelBuilder.Entity("PlanoAprendizado.Models.Feedback", b =>
@@ -671,6 +822,15 @@ namespace PlanoAprendizado.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PlanoAprendizado.Models.BankAccount", b =>
+                {
+                    b.HasOne("PlanoAprendizado.Models.Enterprise", "Enterprise")
+                        .WithMany("BankAccounts")
+                        .HasForeignKey("EnterpriseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("PlanoAprendizado.Models.DayTime", b =>
                 {
                     b.HasOne("PlanoAprendizado.Models.ActualState", "ActualState")
@@ -682,6 +842,25 @@ namespace PlanoAprendizado.Migrations
                     b.HasOne("PlanoAprendizado.Models.Project", null)
                         .WithMany("DayTimes")
                         .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("PlanoAprendizado.Models.Expense", b =>
+                {
+                    b.HasOne("PlanoAprendizado.Models.BankAccount", "BankAccount")
+                        .WithMany("Expenses")
+                        .HasForeignKey("BankAccountId");
+
+                    b.HasOne("PlanoAprendizado.Models.Capture", "Capture")
+                        .WithMany("Expenses")
+                        .HasForeignKey("CaptureId");
+
+                    b.HasOne("PlanoAprendizado.Models.CostCenter", "CostCenter")
+                        .WithMany("Expenses")
+                        .HasForeignKey("CostCenterId");
+
+                    b.HasOne("PlanoAprendizado.Models.Person", "Person")
+                        .WithMany("Expenses")
+                        .HasForeignKey("PersonId");
                 });
 
             modelBuilder.Entity("PlanoAprendizado.Models.Feedback", b =>

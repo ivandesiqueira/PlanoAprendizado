@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kaL8A2NrGqSURrX4grifrokFtSVuHpGgfWnPbRMNfOK8iP5FQ0P+56mO0pHJvwFHkqN229hFujpMgVEV9+jYIA==",
+  "dgSpecHash": "B5SoGHHdncWh/hYhgKK1nU1wMmrcHq/5Mh4hIbJpHHGTHOcpAbgHK7QU2KCR9vAg4gon7Y0/XOJYRSN4FUjDwQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Pichau\\source\\repos\\PlanoAprendizado\\PlanoAprendizado\\PlanoAprendizado.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Pichau\\.nuget\\packages\\datatables.aspnet.core\\2.0.2\\datatables.aspnet.core.2.0.2.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",

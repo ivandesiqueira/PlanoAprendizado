@@ -22,9 +22,25 @@ namespace PlanoAprendizado.Controllers
         }
 
         // GET: Circles
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(/*int pageNumber = 1, int pageSize = 10*/)
         {
-            return View(await _context.Circles.ToListAsync());
+           /* var data =*/ 
+
+            //    int totalCount = data.Count();
+            //    int correctNumber = (pageNumber - 1) * pageSize;
+            //    data = data 
+            //        .Skip(correctNumber)
+            //        .Take(pageSize)
+            //        .ToList();
+
+            //    var viewModel = new PaginationViewModel<Circle>
+            //    {
+            //        Items = data,
+            //        PageNumber = pageNumber,
+            //        PageSize = pageSize,
+            //        TotalCount = totalCount
+            //    };
+            return View(/*viewModel*/await _context.Circles.ToListAsync());
         }
 
         // GET: Circles/Details/5
@@ -145,6 +161,26 @@ namespace PlanoAprendizado.Controllers
             _context.Circles.Remove(circle);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Circles/Delete/5
+        [HttpPost, ActionName("MultipleDelete")]
+        public async Task<IActionResult> MultipleDeleteConfirmed(List <int> ids)
+        {
+            try
+            {
+                foreach (int id in ids)
+                {
+                    var circle = await _context.Circles.FindAsync(id);
+                    _context.Circles.Remove(circle);
+                }
+            }
+            catch(Exception)
+            { 
+                return BadRequest();    
+            }
+            await _context.SaveChangesAsync();
+            return Ok();
         }
 
         private bool CircleExists(int id)

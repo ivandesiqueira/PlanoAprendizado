@@ -1,35 +1,173 @@
 ﻿@model IEnumerable<PlanoAprendizado.Models.Circle>
 
+
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Círculos</h1>
+<h4>Círculos</h4>
 
 <p>
-    <a class="btn btn-info" asp-action="Create">Adicionar</a>
+    <a class="btn btn-info" style="font-size: small" asp-action="Create">Adicionar</a>
 </p>
-<table class="table">
+<table class="table" id="table">
     <thead>
         <tr>
             <th>
+                <input id="centerSelectionBtn" type="checkbox" class="form-check-input" style="position:initial !important; margin-left:0px !important"/>
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th></th>
+            <th></th>        
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input name="selectionBtn" type="checkbox" value="@item.Id" class="form-check-input" style="position:initial !important; margin-left:0px !important" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
                     <a asp-action="Edit" class="btn btn-primary mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-edit"></i></a>
                     <a asp-action="Details" class="btn btn-success mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-search"></i></a>
                     <a asp-action="Delete" class="btn btn-danger mr-1" asp-route-id="@item.Id" style="font-size:x-small"><i class="fa fa-trash"></i></a>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
+    <tfoot>
+        <tr>
+            <th style="visibility: hidden"></th>
+            <th></th>
+            <th style="visibility: hidden"></th>
+        </tr>
+    </tfoot>
 </table>
+<button id="deleteBtn" type="button" class="btn btn-danger" style="font-size: small; display:none">Deletar</button>
+@*<div class="card-footer clearfix">
+    <ul class="pagination pagination-sm m-0 float-right">
+        @if (Model.PageNumber > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize">
+                    Anterior
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="#">
+                    Anterior
+                </a>
+            </li>
+        }
+
+        @for (int i = 1; i <= Math.Ceiling(Model.TotalCount / (double)Model.PageSize); i++)
+        {
+            if (i == Model.PageNumber)
+            {
+                <li class="page-item">
+                    <a class="page-link">
+                        <span>@i</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize">
+                        @i
+                    </a>
+                </li>
+            }
+        }
+
+        @if (Model.PageNumber < Math.Ceiling(Model.TotalCount / (double)Model.PageSize))
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize">
+                    Próximo
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="#">
+                    Próximo
+                </a>
+            </li>
+        }
+    </ul>
+</div>*@
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function(){
+            $("#centerSelectionBtn").click(function(){
+                $("input[name='selectionBtn']").prop('checked', $(this).prop('checked'));
+                if($(this).prop('checked'))
+                {
+                    $("#deleteBtn").show();
+                }else
+                {
+                    $("#deleteBtn").hide();
+                }
+            });
+
+            $("input[name='selectionBtn']").click(function(){
+                var selectId = $("input[name='selectionBtn']:checked").length;
+
+                if($(this).is(':checked') || selectId > 0)
+                {
+                    $("#deleteBtn").show();
+                }else
+                {
+                    $("#deleteBtn").hide();
+                    $("#centerSelectionBtn").prop('checked',false);
+                }
+            });
+
+            $("#deleteBtn").click(function(){
+                var selectedIds = $("input[name='selectionBtn']:checked").map(function(){
+                    return $(this).val();
+                }).get();
+
+                if(selectedIds.length > 0)
+                {
+                    if (confirm("Você tem certeza que deseja deletar este(s) registro(s)?")) {
+                        $.ajax({
+                            url: '@Url.Action("MultipleDelete", "Circles")',
+                            type: 'POST',
+                            data: { ids: selectedIds },
+                            success: function () {
+                                location.reload();
+                            },
+                            error: function () {
+                                alert("Um erro ocorreu ao tentar deletar este(s) registro(s)!");
+                            }
+                        });
+                    }
+                }else
+                {
+                    alert("Por favor, selecione pelo menos um item a ser deletado!");
+                }
+             
+            });
+        });
+    </script>
+}
+
+
+
+
+

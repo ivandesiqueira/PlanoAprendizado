@@ -26,7 +26,8 @@ namespace PlanoAprendizado.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.People
-                .Include(p => p.Circle);
+                 .Include(p => p.Circle);
+       
             return View(await applicationDbContext.ToListAsync());
         }
 

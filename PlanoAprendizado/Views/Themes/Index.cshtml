@@ -4,26 +4,34 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Temas</h1>
+<h4>Temas</h4>
 
 <p>
-    <a class="btn btn-info" asp-action="Create">Adicionar</a>
+    <a class="btn btn-info" style="font-size: small" asp-action="Create">Adicionar</a>
 </p>
-<table class="table">
+<table class="table" id="table">
     <thead>
         <tr>
+            <th>
+                <input id="centerSelectionBtn" type="checkbox" class="form-check-input" style="position:initial !important; margin-left:0px !important" />
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th></th>
+            <th>
+                <button id="deleteBtn" type="button" class="btn btn-danger" style="font-size: small">Deletar</button>
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+                <td>
+                    <input name="selectionBtn" type="checkbox" value="@item.Id" class="form-check-input" style="position:initial !important; margin-left:0px !important" />
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -38,4 +46,69 @@
         </tr>
 }
     </tbody>
+    <tfoot>
+        <tr>
+            <th style="visibility: hidden"></th>
+            <th></th>
+            <th></th>
+            <th style="visibility: hidden"></th>
+        </tr>
+    </tfoot>
 </table>
+@*<@*div class="card-footer clearfix">
+    <ul class="pagination pagination-sm m-0 float-right">
+        @if (Model.PageNumber > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize">
+                    Anterior
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="#">
+                    Anterior
+                </a>
+            </li>
+        }
+
+        @for (int i = 1; i <= Math.Ceiling(Model.TotalCount / (double)Model.PageSize); i++)
+        {
+            if (i == Model.PageNumber)
+            {
+                <li class="page-item">
+                    <a class="page-link">
+                        <span>@i</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize">
+                        @i
+                    </a>
+                </li>
+            }
+        }
+
+        @if (Model.PageNumber < Math.Ceiling(Model.TotalCount / (double)Model.PageSize))
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize">
+                    Próximo
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="#">
+                    Próximo
+                </a>
+            </li>
+        }
+    </ul>
+</div>*@
